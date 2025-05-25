@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, LineChart, Line, ResponsiveContainer } from 'recharts';
+import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { Calculator, Download, RotateCcw, TrendingUp, Users, DollarSign, Percent, Settings } from 'lucide-react';
 import { ValueType } from 'recharts/types/component/DefaultTooltipContent';
 
@@ -125,12 +125,6 @@ const RevenuePayrollCalculator = () => {
     { multiplier: '3x', profit: totalCTC * 3 - calculations.totalOperationalCosts }
   ];
 
-  const marginTrendData = [
-    { multiplier: 1.5, margin: ((totalCTC * 1.5 - calculations.totalOperationalCosts) / (totalCTC * 1.5)) * 100 },
-    { multiplier: 2, margin: ((totalCTC * 2 - calculations.totalOperationalCosts) / (totalCTC * 2)) * 100 },
-    { multiplier: 2.5, margin: ((totalCTC * 2.5 - calculations.totalOperationalCosts) / (totalCTC * 2.5)) * 100 },
-    { multiplier: 3, margin: ((totalCTC * 3 - calculations.totalOperationalCosts) / (totalCTC * 3)) * 100 }
-  ];
 
   const resetAll = () => {
     setTotalCTC(0);
