@@ -101,16 +101,16 @@ const RevenuePayrollCalculator = () => {
   ];
 
   const barData = [
-    { multiplier: '1.5x', profit: totalCTC * 1.5 - calculations.totalOperationalCosts },
-    { multiplier: '2x', profit: totalCTC * 2 - calculations.totalOperationalCosts },
-    { multiplier: '3x', profit: totalCTC * 3 - calculations.totalOperationalCosts }
+    { multiplier: '1.5x', profit: totalCTC * 1.5 - (calculations.totalOperationalCosts ?? 0) },
+    { multiplier: '2x', profit: totalCTC * 2 - (calculations.totalOperationalCosts ?? 0) },
+    { multiplier: '3x', profit: totalCTC * 3 - (calculations.totalOperationalCosts ?? 0) }
   ];
 
   const marginTrendData = [
-    { multiplier: 1.5, margin: ((totalCTC * 1.5 - calculations.totalOperationalCosts) / (totalCTC * 1.5)) * 100 },
-    { multiplier: 2, margin: ((totalCTC * 2 - calculations.totalOperationalCosts) / (totalCTC * 2)) * 100 },
-    { multiplier: 2.5, margin: ((totalCTC * 2.5 - calculations.totalOperationalCosts) / (totalCTC * 2.5)) * 100 },
-    { multiplier: 3, margin: ((totalCTC * 3 - calculations.totalOperationalCosts) / (totalCTC * 3)) * 100 }
+    { multiplier: 1.5, margin: ((totalCTC * 1.5 - (calculations.totalOperationalCosts ?? 0)) / (totalCTC * 1.5)) * 100 },
+    { multiplier: 2, margin: ((totalCTC * 2 - (calculations.totalOperationalCosts ?? 0)) / (totalCTC * 2)) * 100 },
+    { multiplier: 2.5, margin: ((totalCTC * 2.5 - (calculations.totalOperationalCosts ?? 0)) / (totalCTC * 2.5)) * 100 },
+    { multiplier: 3, margin: ((totalCTC * 3 - (calculations.totalOperationalCosts ?? 0)) / (totalCTC * 3)) * 100 }
   ];
 
   const resetAll = () => {
@@ -455,7 +455,7 @@ const RevenuePayrollCalculator = () => {
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis dataKey="multiplier" />
                       <YAxis />
-                      <Tooltip formatter={(value) => `${value.toFixed(1)}%`} />
+                      <Tooltip formatter={(value) => (typeof value === 'number' ? `${value.toFixed(1)}%` : `${value}%`)} />
                       <Line type="monotone" dataKey="margin" stroke="#10B981" strokeWidth={3} />
                     </LineChart>
                   </ResponsiveContainer>
